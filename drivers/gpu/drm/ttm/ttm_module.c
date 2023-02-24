@@ -63,7 +63,7 @@ pgprot_t ttm_prot_from_caching(enum ttm_caching caching, pgprot_t tmp)
 {
 	/* Cached mappings need no adjustment */
 	if (caching == ttm_cached)
-		return tmp;
+		caching = ttm_write_combined;
 
 #if defined(__i386__) || defined(__x86_64__)
 	if (caching == ttm_write_combined)
@@ -80,7 +80,7 @@ pgprot_t ttm_prot_from_caching(enum ttm_caching caching, pgprot_t tmp)
 	else
 		tmp = pgprot_noncached(tmp);
 #endif
-#if defined(__sparc__)
+#if defined(__sparc__) || defined(__riscv)
 	tmp = pgprot_noncached(tmp);
 #endif
 	return tmp;
