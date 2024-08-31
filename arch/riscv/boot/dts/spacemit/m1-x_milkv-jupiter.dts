@@ -1040,13 +1040,13 @@
 			top_trip0: top-trip0 {
 				temperature = <40000>;
 				hysteresis = <5000>;
-				type = "passive";
+				type = "active";
 			};
 
 			top_trip1: top-trip1 {
 				temperature = <55000>;
 				hysteresis = <5000>;
-				type = "passive";
+				type = "active";
 			};
 
 			top_trip2: top-trip2 {
